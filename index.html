@@ -2,9 +2,25 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ferro-IT & SecFerro DIVISION – Instrukcje i Projekty</title>
 <style>
+  :root {
+    --primary-color: #4caf50;
+    --primary-light: #81c784;
+    --primary-dark: #388e3c;
+    --bg-dark-primary: #0a0a0b;
+    --bg-dark-secondary: #16213e;
+    --bg-dark-tertiary: #0f3460;
+    --text-primary: #e0e0e0;
+    --text-secondary: #eee;
+    --card-bg: rgba(30,30,30,0.98);
+    --card-bg-gradient: rgba(25,25,35,0.98);
+    --border-color: rgba(76, 175, 80, 0.2);
+    --shadow-color: rgba(76, 175, 80, 0.4);
+    --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -12,15 +28,16 @@
   body, html {
     margin: 0;
     padding: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0a0a0b 0%, #16213e 50%, #0f3460 100%);
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--bg-dark-primary) 0%, var(--bg-dark-secondary) 50%, var(--bg-dark-tertiary) 100%);
     background-attachment: fixed;
-    color: #eee;
+    color: var(--text-secondary);
     overflow-x: hidden;
     min-height: 100vh;
+    scroll-behavior: smooth;
   }
 
-  /* Animated particles background */
+  /* === Animated Particles Background === */
   .particles-bg {
     position: fixed;
     top: 0;
@@ -30,47 +47,39 @@
     pointer-events: none;
     z-index: 0;
     overflow: hidden;
+    transition: transform 0.3s ease-out;
   }
 
   .particle {
     position: absolute;
-    background: radial-gradient(circle, #4caf50 0%, transparent 0%);
+    background: radial-gradient(circle, var(--primary-color) 0%, transparent 60%);
     border-radius: 50%;
-    opacity: 1;
+    opacity: 0;
     animation: floatParticle 25s infinite ease-in-out;
   }
 
   @keyframes floatParticle {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-      opacity: 0.4;
-    }
-    25% {
-      transform: translate(100px, -150px) scale(1.2);
-      opacity: 0.6;
-    }
-    50% {
-      transform: translate(-50px, 100px) scale(0.8);
-      opacity: 0.3;
-    }
-    75% {
-      transform: translate(150px, 50px) scale(1.1);
-      opacity: 0.5;
-    }
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    25% { transform: translate(var(--p-x1), var(--p-y1)) scale(1.2); opacity: 0.7; }
+    50% { transform: translate(var(--p-x2), var(--p-y2)) scale(0.8); opacity: 0.3; }
+    75% { transform: translate(var(--p-x3), var(--p-y3)) scale(1.1); opacity: 0.6; }
   }
 
-  /* Scroll progress bar */
-  .progress-bar {
+  /* === Scroll Progress Bar === */
+  .progress-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 0;
+    width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, #4caf50, #81c784, #4caf50);
-    background-size: 200% 100%;
     z-index: 1000;
-    transition: width 0.2s ease;
-    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+  }
+  .progress-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light), var(--primary-color));
+    background-size: 200% 100%;
+    width: 0%;
+    box-shadow: 0 0 20px var(--shadow-color);
     animation: shimmer 3s infinite linear;
   }
 
@@ -84,72 +93,58 @@
     z-index: 1;
     max-width: 920px;
     margin: 3rem auto;
-    background: linear-gradient(135deg, rgba(30,30,30,0.98) 0%, rgba(25,25,35,0.98) 100%);
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--card-bg-gradient) 100%);
     border-radius: 24px;
     box-shadow: 
-      0 20px 60px rgba(76,175,80,0.3),
+      0 20px 60px var(--shadow-color),
       0 0 120px rgba(76,175,80,0.15),
       inset 0 1px 0 rgba(255,255,255,0.1);
     padding: 3rem;
     backdrop-filter: blur(20px);
-    border: 2px solid rgba(76,175,80,0.2);
-    animation: mainFadeIn 1s ease-out;
+    border: 2px solid var(--border-color);
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    animation: mainFadeIn 1s ease-out forwards;
   }
 
   @keyframes mainFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(40px) scale(0.95);
-    }
     to {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
   }
 
-  /* Enhanced heading with 3D effect */
+  /* === Typography & Headings === */
   h1 {
-    color: #4caf50;
+    color: var(--primary-color);
     font-weight: 900;
-    font-size: 2.8rem;
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
     margin-bottom: 2rem;
     text-align: center;
     text-shadow: 
-      0 0 30px rgba(76,175,80,0.6),
-      0 5px 15px rgba(0,0,0,0.5),
-      2px 2px 0 rgba(76,175,80,0.3);
-    animation: glowPulse 3s ease-in-out infinite, float 6s ease-in-out infinite;
+      0 0 30px var(--shadow-color),
+      0 5px 15px rgba(0,0,0,0.5);
+    animation: glowPulse 3s ease-in-out infinite;
     letter-spacing: 1px;
-    position: relative;
-    background: linear-gradient(135deg, #4caf50, #81c784, #4caf50);
-    background-size: 200% 200%;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   @keyframes glowPulse {
-    0%, 100% {
-      filter: brightness(1) drop-shadow(0 0 20px rgba(76,175,80,0.5));
-    }
-    50% {
-      filter: brightness(1.3) drop-shadow(0 0 40px rgba(76,175,80,0.8));
-    }
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 20px var(--shadow-color)); }
+    50% { filter: brightness(1.3) drop-shadow(0 0 40px rgba(76,175,80,0.7)); }
   }
 
   h2 {
-    color: #4caf50;
+    color: var(--primary-color);
     font-weight: 800;
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, 4vw, 1.8rem);
     margin-bottom: 1.5rem;
     position: relative;
-    display: inline-block;
     padding-bottom: 10px;
+    display: inline-block;
   }
 
   h2::after {
@@ -159,67 +154,28 @@
     left: 0;
     width: 0;
     height: 4px;
-    background: linear-gradient(90deg, #4caf50, #81c784, transparent);
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light), transparent);
     transition: width 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     border-radius: 2px;
   }
 
   section.visible h2::after {
-    opacity: 1;
     width: 100%;
-  }
-
-  h2::before {
-    content: '▸';
-    position: absolute;
-    left: -25px;
-    opacity: 0;
-    transition: all 0.5s ease;
-    color: #4caf50;
-  }
-
-  section.visible h2::before {
-    opacity: 1;
-    left: -30px;
   }
 
   p, ul, ol {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 1.4rem;
-    color: #e0e0e0;
+    color: var(--text-primary);
   }
 
   ul, ol {
     padding-left: 2rem;
   }
 
-  ul li, ol li {
-    margin-bottom: 1rem;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    position: relative;
-    padding-left: 10px;
-  }
-
-  ul li:hover, ol li:hover {
-    transform: translateX(10px);
-    color: #81c784;
-  }
-
-  ul li::before {
-    content: '◆';
-    position: absolute;
-    left: -20px;
-    color: #4caf50;
-    transition: all 0.3s ease;
-  }
-
-  ul li:hover::before {
-    transform: scale(1.3) rotate(45deg);
-  }
-
   a {
-    color: #81c784;
+    color: var(--primary-light);
     text-decoration: none;
     font-weight: 700;
     position: relative;
@@ -231,27 +187,23 @@
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #4caf50, #81c784);
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
     transition: width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
-
-  a:hover::before {
-    width: 100%;
-  }
-
+  a:hover::before { width: 100%; }
   a:hover {
     color: #a5d6a7;
-    text-shadow: 0 0 15px rgba(76,175,80,0.5);
+    text-shadow: 0 0 15px var(--shadow-color);
   }
 
-  /* Enhanced download button with morphing effect */
+  /* === Interactive Elements === */
   .btn-download {
     display: inline-block;
-    background: linear-gradient(135deg, #4caf50 0%, #388e3c 50%, #2e7d32 100%);
-    background-size: 200% 200%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: #fff;
     padding: 16px 32px;
     border-radius: 50px;
@@ -259,55 +211,33 @@
     text-decoration: none;
     margin: 1.5rem 0;
     box-shadow: 
-      0 10px 30px rgba(76,175,80,0.4),
+      0 10px 30px var(--shadow-color),
       inset 0 1px 0 rgba(255,255,255,0.2);
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     position: relative;
     overflow: hidden;
-    animation: buttonPulse 2s ease-in-out infinite;
   }
-
-  @keyframes buttonPulse {
-    0%, 100% {
-      box-shadow: 0 10px 30px rgba(76,175,80,0.4);
-    }
-    50% {
-      box-shadow: 0 10px 40px rgba(76,175,80,0.6);
-    }
-  }
-
+  
   .btn-download::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
     border-radius: 50%;
     background: rgba(255,255,255,0.3);
     transform: translate(-50%, -50%);
     transition: width 0.6s ease, height 0.6s ease;
   }
-
-  .btn-download:hover::before {
-    width: 400px;
-    height: 400px;
-  }
-
+  .btn-download:hover::before { width: 400px; height: 400px; }
   .btn-download:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 15px 40px rgba(76,175,80,0.6);
-    background-position: 100% 100%;
   }
 
-  .btn-download:active {
-    transform: translateY(-2px) scale(1.02);
-  }
-
-  /* Browser list with 3D cards */
   .browser-list {
     list-style: none;
     padding-left: 0;
+    perspective: 1000px;
   }
 
   .browser-item {
@@ -321,141 +251,83 @@
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
   }
-
-  .browser-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(76,175,80,0.2), transparent);
-    transition: left 0.6s ease;
-  }
-
-  .browser-item:hover::before {
-    left: 100%;
-  }
-
+  
   .browser-item:hover {
     background: linear-gradient(135deg, rgba(76,175,80,0.15), rgba(76,175,80,0.2));
-    border-left-color: #4caf50;
-    transform: translateX(15px) translateZ(10px);
-    box-shadow: -5px 5px 20px rgba(76,175,80,0.3);
+    border-left-color: var(--primary-color);
+    transform: translateX(15px) rotateY(-5deg) translateZ(20px);
+    box-shadow: -10px 10px 30px var(--shadow-color);
   }
-
   .browser-item img {
     width: 48px;
     height: 48px;
     margin-right: 18px;
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    filter: drop-shadow(0 5px 10px rgba(76,175,80,0.3));
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
+  .browser-item:hover img { transform: rotate(360deg) scale(1.2); }
 
-  .browser-item:hover img {
-    transform: rotate(360deg) scale(1.2);
-    filter: drop-shadow(0 10px 20px rgba(76,175,80,0.5));
-  }
-
-  /* Project buttons with magnetic effect */
   button.project-link {
-    background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
-    color: #fff;
-    border: none;
+    background: transparent;
+    color: var(--primary-light);
+    border: 2px solid var(--primary-color);
     padding: 14px 28px;
     font-weight: 700;
     border-radius: 12px;
     cursor: pointer;
     margin: 0.7rem 0.7rem 0.7rem 0;
-    box-shadow: 0 6px 20px rgba(76,175,80,0.35);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     position: relative;
-    overflow: hidden;
     font-size: 1rem;
-  }
-
-  button.project-link::after {
-    content: '→';
-    position: absolute;
-    right: 20px;
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    font-size: 1.2rem;
-  }
-
-  button.project-link:hover::after {
-    opacity: 1;
-    right: 12px;
+    overflow: hidden;
   }
 
   button.project-link:hover {
+    background: var(--primary-color);
+    color: #fff;
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 30px rgba(76,175,80,0.5);
-    padding-right: 40px;
+    box-shadow: 0 10px 30px var(--shadow-color);
   }
 
-  button.project-link:active {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 5px 15px rgba(76,175,80,0.4);
-  }
-
-  /* Section animations */
+  /* === Sections & Animations === */
   section {
     opacity: 0;
-    transform: translateY(40px) rotateX(10deg);
-    animation-fill-mode: forwards;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     margin-bottom: 3.5rem;
     padding: 2rem;
     background: rgba(76,175,80,0.02);
     border-radius: 20px;
     border: 1px solid rgba(76,175,80,0.1);
-    transition: all 0.4s ease;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-
-  section:hover {
-    background: rgba(76,175,80,0.08);
-    border-color: rgba(76,175,80,0.25);
-    box-shadow: 0 10px 30px rgba(76,175,80,0.15);
   }
 
   section.visible {
-    animation: sectionFadeIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     opacity: 1;
-    transform: translateY(0) rotateX(0);
+    transform: translateY(0);
   }
-
-  @keyframes sectionFadeIn {
-    to {
-      opacity: 1;
-      transform: translateY(0) rotateX(0);
-    }
-  }
-
-  /* Installation steps with animated counters */
+  
   #installation ol {
     counter-reset: step-counter;
     list-style: none;
     padding-left: 0;
   }
-
-  #installation ol li {
+  #installation li {
     counter-increment: step-counter;
     position: relative;
     padding-left: 70px;
     margin-bottom: 2rem;
   }
-
-  #installation ol li::before {
+  #installation li::before {
     content: counter(step-counter);
     position: absolute;
     left: 0;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #4caf50, #388e3c);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: #fff;
     border-radius: 50%;
     display: flex;
@@ -463,16 +335,14 @@
     justify-content: center;
     font-weight: 900;
     font-size: 1.4rem;
-    box-shadow: 0 5px 15px rgba(76,175,80,0.4);
+    box-shadow: 0 5px 15px var(--shadow-color);
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
-
-  #installation ol li:hover::before {
-    transform: scale(1.2) rotate(360deg);
+  #installation li:hover::before {
+    transform: translateY(-50%) scale(1.2) rotate(360deg);
     box-shadow: 0 10px 25px rgba(76,175,80,0.6);
   }
 
-  /* Code styling */
   code {
     background: rgba(76,175,80,0.15);
     padding: 4px 10px;
@@ -483,50 +353,43 @@
     border: 1px solid rgba(76,175,80,0.3);
   }
 
-  /* Scroll to top button */
   .scroll-top {
     position: fixed;
     bottom: 40px;
     right: 40px;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #4caf50, #388e3c);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: #fff;
     border: none;
     border-radius: 50%;
     cursor: pointer;
     opacity: 0;
-    transform: scale(0) rotate(0deg);
+    visibility: hidden;
+    transform: scale(0);
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    box-shadow: 0 8px 20px rgba(76,175,80,0.4);
+    box-shadow: 0 8px 20px var(--shadow-color);
     z-index: 1000;
     font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-
   .scroll-top.visible {
     opacity: 1;
-    transform: scale(1) rotate(360deg);
+    visibility: visible;
+    transform: scale(1);
   }
-
   .scroll-top:hover {
-    transform: scale(1.15) rotate(360deg);
+    transform: scale(1.15);
     box-shadow: 0 12px 30px rgba(76,175,80,0.6);
   }
 
-  /* Responsive design */
+  /* === Responsive Design === */
   @media (max-width: 768px) {
     main {
       margin: 1.5rem;
       padding: 2rem 1.5rem;
-    }
-    h1 {
-      font-size: 2rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-    }
-    .btn-download {
-      padding: 14px 24px;
     }
     button.project-link {
       width: 100%;
@@ -538,14 +401,18 @@
 <body>
 
 <div class="particles-bg" id="particlesBg"></div>
-<div class="progress-bar" id="progressBar"></div>
-<button class="scroll-top" id="scrollTopBtn" aria-label="Przewiń do góry">↑</button>
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+<button class="scroll-top" id="scrollTopBtn" title="Przewiń do góry" aria-label="Przewiń do góry">↑</button>
 
 <main>
-  <h1>🚀 Instalacja i Konfiguracja UbeczBlocker</h1>
+  <header>
+    <h1>🚀 Instalacja i Konfiguracja UbeczBlocker</h1>
+  </header>
 
-  <section id="description" aria-label="Opis rozwiązania">
-    <h2>🛡️ Opis rozwiązania</h2>
+  <section id="description" aria-labelledby="description-heading">
+    <h2 id="description-heading">🛡️ Opis rozwiązania</h2>
     <p>UbeczBlocker to ultra-lekka konfiguracja uBlock Origin Lite, zoptymalizowana dla słabszych komputerów (np. Intel Core 2 Duo). Blokuje reklamy, trackery i zbędne zasoby, zwiększając płynność działania przeglądarki i poprawiając prywatność.</p>
     <p><strong>Kluczowe korzyści:</strong></p>
     <ul>
@@ -556,44 +423,29 @@
     </ul>
   </section>
 
-  <section id="browsers" aria-label="Obsługiwane przeglądarki">
-    <h2>🌐 Obsługiwane przeglądarki</h2>
+  <section id="browsers" aria-labelledby="browsers-heading">
+    <h2 id="browsers-heading">🌐 Obsługiwane przeglądarki</h2>
     <ul class="browser-list">
-      <li class="browser-item">
-        <img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_48x48.png" alt="Google Chrome" />
-        <a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreferrer">Google Chrome (90+)</a>
-      </li>
-      <li class="browser-item">
-        <img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox_48x48.png" alt="Mozilla Firefox" />
-        <a href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener noreferrer">Mozilla Firefox (89+)</a>
-      </li>
-      <li class="browser-item">
-        <img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/edge/edge_48x48.png" alt="Microsoft Edge" />
-        <a href="https://www.microsoft.com/edge" target="_blank" rel="noopener noreferrer">Microsoft Edge (Chromium) 90+</a>
-      </li>
-      <li class="browser-item">
-        <img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/opera/opera_48x48.png" alt="Opera" />
-        <a href="https://www.opera.com/" target="_blank" rel="noopener noreferrer">Opera (76+)</a>
-      </li>
-      <li class="browser-item">
-        <img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/safari/safari_48x48.png" alt="Safari" />
-        <a href="https://www.apple.com/safari/" target="_blank" rel="noopener noreferrer">Safari (15+)</a>
-      </li>
+      <li class="browser-item"><img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_48x48.png" alt="Google Chrome" /> <a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreferrer">Google Chrome (90+)</a></li>
+      <li class="browser-item"><img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox_48x48.png" alt="Mozilla Firefox" /> <a href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener noreferrer">Mozilla Firefox (89+)</a></li>
+      <li class="browser-item"><img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/edge/edge_48x48.png" alt="Microsoft Edge" /> <a href="https://www.microsoft.com/edge" target="_blank" rel="noopener noreferrer">Microsoft Edge (Chromium) 90+</a></li>
+      <li class="browser-item"><img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/opera/opera_48x48.png" alt="Opera" /> <a href="https://www.opera.com/" target="_blank" rel="noopener noreferrer">Opera (76+)</a></li>
+      <li class="browser-item"><img src="https://raw.githubusercontent.com/alrra/browser-logos/main/src/safari/safari_48x48.png" alt="Safari" /> <a href="https://www.apple.com/safari/" target="_blank" rel="noopener noreferrer">Safari (15+)</a></li>
     </ul>
     <p><em>⚠️ Starsze przeglądarki jak Internet Explorer nie są obsługiwane.</em></p>
   </section>
 
-  <section id="download" aria-label="Pobranie pliku konfiguracyjnego">
-    <h2>📥 Pobierz plik konfiguracyjny</h2>
+  <section id="download" aria-labelledby="download-heading">
+    <h2 id="download-heading">📥 Pobierz plik konfiguracyjny</h2>
     <p>Kliknij poniższy przycisk, aby pobrać oficjalny plik konfiguracyjny i zaimportować go do rozszerzenia uBlock Origin Lite:</p>
-    <a href="https://github.com/anonymousik/UBeczBlock/blob/main/ublock_origin_lite_config.json" target="_blank" rel="noopener noreferrer" class="btn-download" aria-label="Pobierz konfigurację">
+    <a href="https://github.com/anonymousik/UBeczBlock/blob/main/ublock_origin_lite_config.json" target="_blank" rel="noopener noreferrer" class="btn-download" aria-label="Pobierz konfigurację ublock_origin_lite_config.json">
       📦 Pobierz ublock_origin_lite_config.json
     </a>
     <p><small>💡 Rozmiar: ~45KB | Aktualizacja: 2025</small></p>
   </section>
 
-  <section id="installation" aria-label="Instrukcja instalacji">
-    <h2>🔧 Instrukcja instalacji krok po kroku</h2>
+  <section id="installation" aria-labelledby="installation-heading">
+    <h2 id="installation-heading">🔧 Instrukcja instalacji krok po kroku</h2>
     <ol>
       <li>Zainstaluj rozszerzenie <a href="https://chrome.google.com/webstore/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh" target="_blank" rel="noopener noreferrer">uBlock Origin Lite</a> w swojej przeglądarce.</li>
       <li>Przejdź do ustawień rozszerzenia i wybierz opcję <strong>Importuj konfigurację</strong>.</li>
@@ -603,88 +455,136 @@
     </ol>
   </section>
 
-  <section id="projects" aria-label="Projekty">
-    <h2>🎯 Nasze Projekty</h2>
+  <section id="projects" aria-labelledby="projects-heading">
+    <h2 id="projects-heading">🎯 Nasze Projekty</h2>
     <p>Kliknij poniższe przyciski, aby przejść do dedykowanych stron projektów:</p>
-    <button class="project-link" data-projekt="UBeczBlocker" aria-label="Otwórz projekt UBeczBlocker">🛡️ UBeczBlocker</button>
-    <button class="project-link" data-projekt="SecFerro-Python" aria-label="Otwórz SecFerro Python">🐍 SecFerro Python</button>
-    <button class="project-link" data-projekt="FerroShield" aria-label="Otwórz FerroShield">🔐 FerroShield</button>
-    <button class="project-link" data-projekt="DevTools" aria-label="Otwórz DevTools">⚙️ DevTools</button>
+    <div>
+        <button class="project-link" data-projekt="UBeczBlocker" aria-label="Otwórz projekt UBeczBlocker">🛡️ UBeczBlocker</button>
+        <button class="project-link" data-projekt="SecFerro-Python" aria-label="Otwórz SecFerro Python">🐍 SecFerro Python</button>
+        <button class="project-link" data-projekt="FerroShield" aria-label="Otwórz FerroShield">🔐 FerroShield</button>
+        <button class="project-link" data-projekt="DevTools" aria-label="Otwórz DevTools">⚙️ DevTools</button>
+    </div>
   </section>
 </main>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  // === ANIMATED PARTICLES ===
-  const particlesBg = document.getElementById('particlesBg');
-  for(let i = 0; i < 20; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    const size = Math.random() * 8 + 3;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    particle.style.animationDelay = Math.random() * 25 + 's';
-    particle.style.animationDuration = (Math.random() * 15 + 20) + 's';
-    particlesBg.appendChild(particle);
-  }
+    'use strict';
 
-  // === STAGGERED SECTION ANIMATIONS ===
-  const sections = document.querySelectorAll("main > section");
-  sections.forEach((section, i) => {
-    setTimeout(() => {
-      section.classList.add("visible");
-    }, 200 * i);
-  });
+    const config = {
+        particleCount: 25,
+        projectBaseUrl: "https://anonymousik.is-a.dev/UBeczBlock?projekt=",
+        scrollTopVisibleOffset: 400
+    };
 
-  // === PROJECT LINKS WITH ANIMATION ===
-  const baseProjectUrl = "https://anonymousik.is-a.dev/UBeczBlock?projekt=";
-  document.querySelectorAll(".project-link").forEach(button => {
-    button.addEventListener("click", () => {
-      const projekt = button.getAttribute("data-projekt");
-      if(projekt){
-        button.style.transform = "scale(0.9)";
-        setTimeout(() => {
-          button.style.transform = "";
-          const fullUrl = baseProjectUrl + encodeURIComponent(projekt);
-          window.open(fullUrl, "_blank", "noopener,noreferrer");
-        }, 150);
-      }
-    });
-  });
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
 
-  // === SCROLL PROGRESS BAR ===
-  const progressBar = document.getElementById('progressBar');
-  window.addEventListener('scroll', () => {
-    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    progressBar.style.width = scrolled + '%';
-  });
+    /**
+     * Creates and animates background particles.
+     * Optimized with DocumentFragment for better performance.
+     */
+    const initParticles = () => {
+        const particlesContainer = $('#particlesBg');
+        if (!particlesContainer) return;
 
-  // === SCROLL TO TOP BUTTON ===
-  const scrollTopBtn = document.getElementById('scrollTopBtn');
-  window.addEventListener('scroll', () => {
-    if(window.pageYOffset > 400) {
-      scrollTopBtn.classList.add('visible');
-    } else {
-      scrollTopBtn.classList.remove('visible');
-    }
-  });
-  
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < config.particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 8 + 3;
+            
+            particle.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                --p-x1: ${Math.random() * 200 - 100}px;
+                --p-y1: ${Math.random() * 200 - 100}px;
+                --p-x2: ${Math.random() * 200 - 100}px;
+                --p-y2: ${Math.random() * 200 - 100}px;
+                --p-x3: ${Math.random() * 200 - 100}px;
+                --p-y3: ${Math.random() * 200 - 100}px;
+            `;
+            particle.style.animationDelay = `${Math.random() * 25}s`;
+            particle.style.animationDuration = `${Math.random() * 15 + 20}s`;
+            
+            fragment.appendChild(particle);
+        }
+        particlesContainer.appendChild(fragment);
+    };
 
-  // === PARALLAX EFFECT ON SCROLL ===
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    particlesBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-  });
+    /**
+     * Fades in sections as they become visible in the viewport.
+     */
+    const initSectionObserver = () => {
+        const sections = $$("main > section");
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+    };
+
+    /**
+     * Adds click handlers to project links.
+     */
+    const initProjectLinks = () => {
+        $$(".project-link").forEach(button => {
+            button.addEventListener("click", (e) => {
+                const projekt = e.currentTarget.dataset.projekt;
+                if (projekt) {
+                    const fullUrl = config.projectBaseUrl + encodeURIComponent(projekt);
+                    window.open(fullUrl, "_blank", "noopener,noreferrer");
+                }
+            });
+        });
+    };
+    
+    /**
+     * Manages scroll-based effects like progress bar, parallax, and scroll-to-top button.
+     * Uses a single throttled event listener for performance.
+     */
+    const initScrollEffects = () => {
+        const progressBar = $('#progressBar');
+        const scrollTopBtn = $('#scrollTopBtn');
+        const particlesBg = $('#particlesBg');
+        
+        const handleScroll = () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            const scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            
+            progressBar.style.width = `${scrollPercent}%`;
+            scrollTopBtn.classList.toggle('visible', window.pageYOffset > config.scrollTopVisibleOffset);
+            particlesBg.style.transform = `translateY(${window.pageYOffset * 0.3}px)`;
+        };
+
+        let isThrottled = false;
+        window.addEventListener('scroll', () => {
+            if (!isThrottled) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    isThrottled = false;
+                });
+                isThrottled = true;
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    };
+
+    // Initialize all functionalities
+    initParticles();
+    initSectionObserver();
+    initProjectLinks();
+    initScrollEffects();
 });
 </script>
 </body>
