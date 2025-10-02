@@ -1,0 +1,44 @@
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ["main"]   # Workflow uruchamia się przy pushu do branchu main
+  workflow_dispatch:     # Pozwala uruchomić ręcznie z zakładki Actions
+
+permissions:
+  contents: read         # Pozwolenie na czytanie repozytorium
+  pages: write           # Pozwolenie na zapis do GitHub Pages
+  id-token: write        # Pozwolenie na generowanie ID tokena potrzebnego do wdrożenia
+
+concurrency:
+  group: "pages"         # Jeden pipeline na raz, kolejne czekają w kolejce
+  cancel-in-progress: false   # Nie przerywaj już działających pipeline'ów
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}  # Automatyczne podanie URL wdrożonej strony
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout                     # Pobranie kodu z repozytorium
+        uses: actions/checkout@v4
+
+      - name: Setup Pages                  # Konfiguracja środowiska GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact              # Przesłanie całej zawartości repozytorium jako artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'                       # Ścieżka do statycznej zawartości do wdrożenia
+
+      - name: Deploy to GitHub Pages       # Właściwe wdrożenie na Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Setup Node.js environment    # [opcjonalnie] Konfiguracja środowiska Node.js (np. do budowania)
+        uses: actions/setup-node@v3.9.1
+        with:
+          node-version: '18.x'
+          always-auth: true
