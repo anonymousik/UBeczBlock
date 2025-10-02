@@ -1,113 +1,193 @@
-9<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pełna konfiguracja uBlock Origin Lite - SecFERRO DIVISION IT TEAM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>CzajnikDeluxe - Pomysły i Projekty</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; }
-  body {
-    margin: 0; padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #121212; color: #e0e0e0; line-height: 1.6; min-height: 100vh;
-    display: flex; flex-direction: column;
+  /* Reset i podst. styl */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body, html {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #121213;
+    color: #eee;
+    min-height: 100vh;
+    scroll-behavior: smooth;
   }
-  a { color: #00c6ff; text-decoration: none; }
+  a { color: #4caf50; text-decoration: none; }
   a:hover, a:focus { text-decoration: underline; }
+
   header {
-    background: linear-gradient(45deg,#0088ff,#00c6ff);
-    padding: 2rem 1rem; color: #fff; text-align: center;
-    text-shadow: 0 0 12px rgba(0,198,255,0.85); user-select: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(18,18,19,0.95);
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
   }
+  header .logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    cursor: pointer;
+    user-select: none;
+    color: #4caf50;
+  }
+  nav a {
+    margin-left: 2rem;
+    font-weight: 600;
+  }
+
   main {
-    flex-grow: 1; max-width: 900px; margin: 2rem auto 3rem;
-    background: #1e1e1e; border-radius: 15px; box-shadow: 0 0 40px rgba(0,198,255,0.4);
-    padding: 2rem 3rem;
+    padding-top: 80px;
+    max-width: 960px;
+    margin: 0 auto;
   }
-  h1, h2 { font-weight: 900; }
-  h2 {
-    color: #00c6ff; border-bottom: 2px solid #007acc;
-    padding-bottom: 0.4rem; margin-bottom: 1rem;
+  section {
+    margin: 3rem 1rem;
   }
-  p, ul, ol {
-    margin-bottom: 1.2rem; margin-left: 1.5rem;
+  h1, h2 {
+    font-weight: 800;
+    color: #4caf50;
+    margin-bottom: 0.8rem;
   }
-  button#downloadBtn {
-    background: #00aaff; border: none; color: white;
-    padding: 1.1rem 2.5rem; font-weight: 800; font-size: 1.2rem;
-    border-radius: 10px; cursor: pointer;
-    box-shadow: 0 0 14px #00aaffbb; transition: background-color 0.3s ease;
-    user-select: none; margin-bottom: 1.5rem;
+  p, li {
+    line-height: 1.6;
+    font-size: 1.05rem;
   }
-  button#downloadBtn:hover, button#downloadBtn:focus {
-    background: #007bbf;
+  ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
   }
-  pre {
-    background: #282828; border-radius: 12px; padding: 1rem 1.5rem;
-    max-height: 280px; overflow-y: auto; font-size: 0.9rem; color: #79c7ff;
-    box-shadow: inset 0 0 18px #00c6ff66; white-space: pre-wrap; word-wrap: break-word;
+
+  /* Hero */
+  #hero {
+    text-align: center;
+    padding: 5rem 1rem 3rem;
+    background-image: linear-gradient(135deg, #1b5e20cc, #121213cc), url('https://source.unsplash.com/1200x600/?technology,code');
+    background-size: cover;
+    background-position: center;
+    border-radius: 18px;
+    color: white;
+    box-shadow: 0 0 30px #4caf5066;
   }
-  section { margin-bottom: 2rem; }
-  footer {
-    text-align: center; padding: 1rem 0;
-    background: #111111; border-top: 1px solid #222; color: #555555;
-    user-select: none; font-size: 0.85rem;
+  #hero h1 {
+    font-size: 3rem;
+    text-shadow: 0 0 20px #4caf50cc;
   }
-  @media (max-width: 720px) {
-    main { margin: 1rem 1rem 2rem; padding: 1.5rem 1.5rem; }
-    button#downloadBtn { padding: 0.9rem 1.8rem; font-size: 1rem; }
+  #hero p {
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  #hero button {
+    background: #4caf50;
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    border-radius: 35px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #4caf5044;
+    transition: background-color 0.3s ease;
+  }
+  #hero button:hover {
+    background: #66bb6a;
+  }
+
+  /* Product card */
+  #ubeczblock {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 0 20px #4caf5044;
+  }
+  #ubeczblock h2 {
+    color: #81c784;
+    margin-bottom: 1rem;
+  }
+  #ubeczblock p {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Instrukcja */
+  #instrukcja {
+    background: #262626;
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 15px #4caf5044;
+  }
+  #instrukcja h3 {
+    color: #a5d6a7;
+    margin-bottom: 1rem;
+  }
+  #instrukcja ol {
+    counter-reset: instrukcja-counter;
+  }
+  #instrukcja li {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+  }
+  #instrukcja li::before {
+    content: counter(instrukcja-counter) ". ";
+    counter-increment: instrukcja-counter;
+    font-weight: 700;
+    color: #4caf50;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header nav a {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+    }
+    #hero h1 {
+      font-size: 2rem;
+    }
+    #hero p {
+      font-size: 1rem;
+    }
   }
 </style>
 </head>
 <body>
-<header>
-  <h1>Pełna konfiguracja uBlock Origin Lite</h1>
-  <p>Optymalizacja dla YouTube i Chromecast (Gen1/Gen2)</p>
-</header>
-<main>
-  <section>
-    <h2>Pobierz i zaimportuj konfigurację</h2>
-    <p>Kliknij poniższy przycisk, aby pobrać plik konfiguracji. Następnie zaimportuj go w rozszerzeniu (Ustawienia → Import / Export).</p>
-    <button id="downloadBtn" aria-label="Pobierz plik konfiguracyjny uBlock Origin Lite">Pobierz plik JSON</button>
-  </section>
-  <section>
-    <h2>Instalacja uBlock Origin Lite</h2>
-    <ul>
-      <li><strong>Chrome / Edge:</strong> <a href="https://chrome.google.com/webstore/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh" target="_blank" rel="noopener">Chrome Web Store</a></li>
-      <li><strong>Firefox:</strong> <a href="https://addons.mozilla.org/pl/firefox/addon/ublock-origin-lite-proxy/" target="_blank" rel="noopener">Mozilla AMO</a></li>
-    </ul>
-  </section>
-  <section>
-    <h2>Przykładowe filtry</h2>
-    <pre>youtube.com##+js(set,y.config_.Config.supportPopupsBlockMessage,false)
-youtube.com##+js(set,.prototype.adFound,0)
-chromecast.com##+js(aopr,window.navigator.userAgent,'ast_lite_chromecast_gen12')
-chromecast.com##+js(set,window.navigator.plugins.length, 1)</pre>
-  </section>
-  <section>
-    <h2>Wsparcie i społeczność</h2>
-    <ul>
-      <li><a href="https://github.com/uBlockOrigin/uBlock-issues" target="_blank" rel="noopener">GitHub Issues uBlock Origin</a></li>
-      <li><a href="https://github.com/uBlockOrigin/uAssets" target="_blank" rel="noopener">Repozytorium filtrów uBlock Origin</a></li>
-      <li><a href="https://reddit.com/r/uBlockOrigin" target="_blank" rel="noopener">Reddit r/uBlockOrigin</a></li>
-    </ul>
-  </section>
-</main>
-<footer>
-  SecFERRO DIVISION IT TEAM &copy; 2025
-</footer>
-<script>
-const configJSON = `{
+  <header role="banner">
+    <div tabindex="0" class="logo" onclick="scrollTo('hero')" onkeypress="if(event.key==='Enter')scrollTo('hero')" aria-label="Przejdź do strony głównej CzajnikDeluxe">CzajnikDeluxe</div>
+    <nav role="navigation" aria-label="Główne menu">
+      <a href="#hero">Start</a>
+      <a href="#ubeczblock">UbeczBlock</a>
+      <a href="#instrukcja">Instrukcja</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" tabindex="-1" aria-label="Sekcja powitalna">
+      <h1>Witaj w świecie CzajnikDeluxe</h1>
+      <p>Prezentuję innowacyjne pomysły i projekty zoptymalizowane pod sprzęt Czajnika Deluxe.</p>
+      <button onclick="scrollTo('ubeczblock')">Pierwszy projekt: UbeczBlock</button>
+    </section>
+
+    <section id="ubeczblock" tabindex="-1" aria-label="Opis UbeczBlock">
+      <h2>UbeczBlock - zaawansowana konfiguracja uBlock Origin Lite</h2>
+      <p>Specjalnie zoptymalizowany filtr adblocker dla wymagań sprzętowych Czajnika Deluxe.</p>
+      <pre style="background:#222; padding:1rem; border-radius:8px; overflow-x:auto; font-size:0.9rem; max-height:400px;">
+{
   "settings": {
     "enable-remote-blocklists": true,
     "enable-heuristics": true,
-    "dynamic-filtering-enabled": false,
+    "dynamic-filtering-enabled": true,
     "strict-blocking": true,
     "block-media": true,
-    "suspend-background-lists": true,
+    "suspend-background-lists": false,
     "network-condition": {
-      "max-connections": 3,
-      "max-requests": 5,
+      "max-connections": 6,
+      "max-requests": 10,
       "http-pipelining": false
     },
     "logging-level": "error"
@@ -116,33 +196,14 @@ const configJSON = `{
     "youtube.com##+js(set,y.config_.Config.supportPopupsBlockMessage,false)",
     "youtube.com##+js(set,.prototype.adFound,0)",
     "youtube.com##+js(set,player.config.raw_player_response.adPlacements,[])",
-    "youtube.com##+js(set,.prototype.hasInstreamAd,true)",
-    "chromecast.com##+js(aopr,window.navigator.userAgent,'ast_lite_chromecast_gen12')",
-    "chromecast.com##+js(set,window.navigator.plugins.length, 1)",
-    "||update.googleapis.com$domain=chromecast.com",
-    "chromecast.com##+js(set,window.Date.prototype.getTime,,window.Date.prototype.getTime() - 86400000)",
-    "||adworkmedia.com/gLoader.php?GID=$script,domain=youtube.com",
-    "||adworkmedia.com/gTemplate.php?GID=$subdocument,domain=youtube.com",
-    "||loxtk.com/gLoader.php?GID=$script,domain=youtube.com",
-    "||loxtk.com/gTemplate.php?GID=$subdocument,domain=youtube.com",
-    "||contentlockingnetworks.com/gLoader.php?GID=$script,domain=youtube.com",
-    "||contentlockingnetworks.com/gTemplate.php?GID=$subdocument,domain=youtube.com",
-    "||adscendmedia.com/gwjs.php?aff=$script,domain=youtube.com",
-    "||adscendmedia.com/gwframe.php?$subdocument,domain=youtube.com",
-    "||cpagrip.com/script_include.php?id=$script,domain=youtube.com",
-    "||pagead2.googlesyndication.com/pagead/show_ads.js$script,domain=youtube.com",
-    "||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=youtube.com",
-    "||blockadblock.com$script,domain=youtube.com",
-    "@@||youtube.com/yts/jsbin/player*html5$script,domain=youtube.com",
-    "@@||youtube.com/yts/jsbin/player*base.js$script,domain=youtube.com",
     "youtube.com###player-ads",
     "youtube.com###masthead-ad",
-    "youtube.com###google_ads_iframe",
-    "youtube.com##.ytp-ce-element",
-    "youtube.com##.ytp-cards-teaser-text",
-    "youtube.com##.ytp-cards-button-icon-default",
-    "youtube.com##.ytp-scroll-min.ytp-pause-overlay",
-    "youtube.com##.annotation-type-text.annotation-popup-shape.annotation-shape"
+    "chromecast.com##+js(set,window.navigator.plugins.length, 1)",
+    "chromecast.com##+js(set,window.Date.prototype.getTime,,window.Date.prototype.getTime() - 86400000)",
+    "||pagead2.googlesyndication.com/pagead/show_ads.js$script,domain=youtube.com",
+    "||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=youtube.com",
+    "@@||youtube.com/yts/jsbin/player*html5$script,domain=youtube.com",
+    "@@||youtube.com/yts/jsbin/player*base.js$script,domain=youtube.com"
   ],
   "advanced": {
     "enable-websocket-filtering": true,
@@ -150,38 +211,47 @@ const configJSON = `{
     "filter-lists": [
       "EasyList",
       "uBlock filters",
-      "uBlock filters – Annoyances",
-      "uBlock filters – Privacy",
       "Fanboy's Annoyances",
-      "Fanboy's Social Blocking List",
       "AdGuard URL Tracking Protection"
     ],
     "sponsorblock": {
       "filters-enabled": true,
       "categories-enabled": [
-        "sponsor",
-        "intro",
-        "outro",
-        "selfpromo",
-        "interaction",
-        "music_offtopic",
-        "preview"
+        "sponsor", "intro", "outro", "selfpromo", "interaction", "music_offtopic", "preview"
       ]
     }
   }
-}`;
+}
+      </pre>
+    </section>
 
-document.getElementById('downloadBtn').addEventListener('click', () => {
-  const blob = new Blob([configJSON], {type: 'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.download = 'ublock_origin_lite_config.json';
-  a.href = url;
-  a.click();
-  URL.revokeObjectURL(url);
-  alert('Pobrano plik konfiguracyjny.
-W uBlock Origin Lite zaimportuj go w ustawieniach.');
-});
+    <section id="instrukcja" tabindex="-1" aria-label="Instrukcja instalacji i używania UbeczBlock">
+      <h2>Instrukcja publikacji i konfiguracji</h2>
+      <ol>
+        <li>Zainstaluj uBlock Origin Lite z Chrome Web Store lub Mozilla Add-ons.</li>
+        <li>Przejdź do ustawień rozszerzenia i wybierz opcję Import / Export.</li>
+        <li>Wgraj powyższy plik konfiguracyjny JSON.</li>
+        <li>Zapisz ustawienia i odśwież przeglądarkę.</li>
+        <li>Testuj działanie, upewniając się, że reklamy na YouTube i Chromecast są skutecznie blokowane.</li>
+        <li>Dołączaj nowe filtry według potrzeb i zgłaszaj sugestie przez sekcję Kontakt.</li>
+      </ol>
+    </section>
+
+    <section id="kontakt" tabindex="-1" aria-label="Sekcja kontaktowa">
+      <h2>Kontakt z CzajnikDeluxe</h2>
+      <p>Masz pytania lub chcesz zaproponować pomysł? Napisz do mnie na <a href="mailto: kontakt@czajnikdeluxe.pl">kontakt@czajnikdeluxe.pl</a>.</p>
+    </section>
+  </main>
+
+  <footer role="contentinfo" aria-label="Stopka strony">
+    <p style="text-align:center; padding:2rem 1rem; color:#777;">© 2025 CzajnikDeluxe. Wszelkie prawa zastrzeżone.</p>
+  </footer>
+
+<script>
+  function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({behavior: 'smooth'});
+  }
 </script>
 </body>
 </html>
