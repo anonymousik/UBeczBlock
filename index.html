@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pełna konfiguracja uBlock Origin Lite - SecFERRO DIVISION IT TEAM</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212; color: #e0e0e0; line-height: 1.6; min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+  a { color: #00c6ff; text-decoration: none; }
+  a:hover, a:focus { text-decoration: underline; }
+  header {
+    background: linear-gradient(45deg,#0088ff,#00c6ff);
+    padding: 2rem 1rem; color: #fff; text-align: center;
+    text-shadow: 0 0 12px rgba(0,198,255,0.85); user-select: none;
+  }
+  main {
+    flex-grow: 1; max-width: 900px; margin: 2rem auto 3rem;
+    background: #1e1e1e; border-radius: 15px; box-shadow: 0 0 40px rgba(0,198,255,0.4);
+    padding: 2rem 3rem;
+  }
+  h1, h2 { font-weight: 900; }
+  h2 {
+    color: #00c6ff; border-bottom: 2px solid #007acc;
+    padding-bottom: 0.4rem; margin-bottom: 1rem;
+  }
+  p, ul, ol {
+    margin-bottom: 1.2rem; margin-left: 1.5rem;
+  }
+  button#downloadBtn {
+    background: #00aaff; border: none; color: white;
+    padding: 1.1rem 2.5rem; font-weight: 800; font-size: 1.2rem;
+    border-radius: 10px; cursor: pointer;
+    box-shadow: 0 0 14px #00aaffbb; transition: background-color 0.3s ease;
+    user-select: none; margin-bottom: 1.5rem;
+  }
+  button#downloadBtn:hover, button#downloadBtn:focus {
+    background: #007bbf;
+  }
+  pre {
+    background: #282828; border-radius: 12px; padding: 1rem 1.5rem;
+    max-height: 280px; overflow-y: auto; font-size: 0.9rem; color: #79c7ff;
+    box-shadow: inset 0 0 18px #00c6ff66; white-space: pre-wrap; word-wrap: break-word;
+  }
+  section { margin-bottom: 2rem; }
+  footer {
+    text-align: center; padding: 1rem 0;
+    background: #111111; border-top: 1px solid #222; color: #555555;
+    user-select: none; font-size: 0.85rem;
+  }
+  @media (max-width: 720px) {
+    main { margin: 1rem 1rem 2rem; padding: 1.5rem 1.5rem; }
+    button#downloadBtn { padding: 0.9rem 1.8rem; font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Pełna konfiguracja uBlock Origin Lite</h1>
+  <p>Optymalizacja dla YouTube i Chromecast (Gen1/Gen2)</p>
+</header>
+<main>
+  <section>
+    <h2>Pobierz i zaimportuj konfigurację</h2>
+    <p>Kliknij poniższy przycisk, aby pobrać plik konfiguracji. Następnie zaimportuj go w rozszerzeniu (Ustawienia → Import / Export).</p>
+    <button id="downloadBtn" aria-label="Pobierz plik konfiguracyjny uBlock Origin Lite">Pobierz plik JSON</button>
+  </section>
+  <section>
+    <h2>Instalacja uBlock Origin Lite</h2>
+    <ul>
+      <li><strong>Chrome / Edge:</strong> <a href="https://chrome.google.com/webstore/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh" target="_blank" rel="noopener">Chrome Web Store</a></li>
+      <li><strong>Firefox:</strong> <a href="https://addons.mozilla.org/pl/firefox/addon/ublock-origin-lite-proxy/" target="_blank" rel="noopener">Mozilla AMO</a></li>
+    </ul>
+  </section>
+  <section>
+    <h2>Przykładowe filtry</h2>
+    <pre>youtube.com##+js(set,y.config_.Config.supportPopupsBlockMessage,false)
+youtube.com##+js(set,.prototype.adFound,0)
+chromecast.com##+js(aopr,window.navigator.userAgent,'ast_lite_chromecast_gen12')
+chromecast.com##+js(set,window.navigator.plugins.length, 1)</pre>
+  </section>
+  <section>
+    <h2>Wsparcie i społeczność</h2>
+    <ul>
+      <li><a href="https://github.com/uBlockOrigin/uBlock-issues" target="_blank" rel="noopener">GitHub Issues uBlock Origin</a></li>
+      <li><a href="https://github.com/uBlockOrigin/uAssets" target="_blank" rel="noopener">Repozytorium filtrów uBlock Origin</a></li>
+      <li><a href="https://reddit.com/r/uBlockOrigin" target="_blank" rel="noopener">Reddit r/uBlockOrigin</a></li>
+    </ul>
+  </section>
+</main>
+<footer>
+  SecFERRO DIVISION IT TEAM &copy; 2025
+</footer>
+<script>
+const configJSON = `<!-- PLACEHOLDER FOR ublock_origin_lite_config.json CONTENT -->`;
+
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  const blob = new Blob([configJSON], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.download = 'ublock_origin_lite_config.json';
+  a.href = url;
+  a.click();
+  URL.revokeObjectURL(url);
+  alert('Pobrano plik konfiguracyjny.
+W uBlock Origin Lite zaimportuj go w ustawieniach.');
+});
+</script>
+</body>
+</html>
