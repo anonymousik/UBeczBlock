@@ -2,256 +2,339 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>CzajnikDeluxe - Pomysły i Projekty</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ferro-IT & SecFerro DIVISION - STREFA DELUXE!</title>
 <style>
-  /* Reset i podst. styl */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
   body, html {
+    margin: 0; padding: 0;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: #121213;
+    background-color: #121213;
     color: #eee;
-    min-height: 100vh;
     scroll-behavior: smooth;
   }
-  a { color: #4caf50; text-decoration: none; }
-  a:hover, a:focus { text-decoration: underline; }
-
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(18,18,19,0.95);
-    padding: 10px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
-  }
-  header .logo {
-    font-size: 1.8rem;
-    font-weight: 900;
-    cursor: pointer;
-    user-select: none;
-    color: #4caf50;
-  }
-  nav a {
-    margin-left: 2rem;
-    font-weight: 600;
-  }
-
   main {
-    padding-top: 80px;
-    max-width: 960px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    box-shadow: 0 0 25px #4caf50aa;
+    padding: 2rem;
   }
-  section {
-    margin: 3rem 1rem;
-  }
-  h1, h2 {
-    font-weight: 800;
+  h1, h2, h3, h4 {
     color: #4caf50;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+  }
+  p, ul, ol {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  ul, ol {
+    padding-left: 1.6rem;
+  }
+  ul li, ol li {
     margin-bottom: 0.8rem;
   }
-  p, li {
-    line-height: 1.6;
-    font-size: 1.05rem;
-  }
-  ul {
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  /* Hero */
-  #hero {
-    text-align: center;
-    padding: 5rem 1rem 3rem;
-    background-image: linear-gradient(135deg, #1b5e20cc, #121213cc), url('https://source.unsplash.com/1200x600/?technology,code');
-    background-size: cover;
-    background-position: center;
-    border-radius: 18px;
-    color: white;
-    box-shadow: 0 0 30px #4caf5066;
-  }
-  #hero h1 {
-    font-size: 3rem;
-    text-shadow: 0 0 20px #4caf50cc;
-  }
-  #hero p {
-    font-size: 1.3rem;
-    margin-top: 1rem;
-    margin-bottom: 2.5rem;
-  }
-  #hero button {
-    background: #4caf50;
-    border: none;
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 1rem 2rem;
-    border-radius: 35px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #4caf5044;
-    transition: background-color 0.3s ease;
-  }
-  #hero button:hover {
-    background: #66bb6a;
-  }
-
-  /* Product card */
-  #ubeczblock {
-    background: #1a1a1a;
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 0 20px #4caf5044;
-  }
-  #ubeczblock h2 {
+  a {
     color: #81c784;
-    margin-bottom: 1rem;
+    text-decoration: none;
   }
-  #ubeczblock p {
-    color: #ccc;
-    font-size: 1rem;
-    margin-bottom: 2rem;
+  a:hover, a:focus {
+    text-decoration: underline;
+    outline: none;
   }
-
-  /* Instrukcja */
-  #instrukcja {
-    background: #262626;
-    border-radius: 15px;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 0 15px #4caf5044;
+  section {
+    margin-top: 3rem;
   }
-  #instrukcja h3 {
-    color: #a5d6a7;
-    margin-bottom: 1rem;
+  footer {
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+    font-size: 0.9rem;
   }
-  #instrukcja ol {
-    counter-reset: instrukcja-counter;
+  :focus-visible {
+    outline: 2px solid #81c784;
+    outline-offset: 2px;
   }
-  #instrukcja li {
-    margin-bottom: 1.2rem;
-    font-size: 1rem;
-  }
-  #instrukcja li::before {
-    content: counter(instrukcja-counter) ". ";
-    counter-increment: instrukcja-counter;
-    font-weight: 700;
-    color: #4caf50;
-  }
-
-  /* Responsive */
   @media (max-width: 600px) {
-    header nav a {
-      margin-left: 1rem;
-      font-size: 0.9rem;
+    main {
+      margin: 1rem;
+      padding: 1.25rem;
     }
-    #hero h1 {
-      font-size: 2rem;
-    }
-    #hero p {
-      font-size: 1rem;
-    }
+  }
+  /* CzajnikDeluxe specific */
+  #czajnikdeluxe article {
+    background-color: #292b2f;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.3);
+    transition: transform 0.3s ease;
+  }
+  #czajnikdeluxe article:hover,
+  #czajnikdeluxe article:focus-within {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.7);
+  }
+  #czajnikdeluxe a {
+    color: #4caf50;
+    font-weight: 700;
+  }
+  #czajnikdeluxe a:hover {
+    text-decoration: underline;
+  }
+  /* Accordion styles */
+  button.accordion {
+    background-color: #222;
+    color: #eee;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    outline: none;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    margin-bottom: 0.5rem;
+  }
+  button.accordion:hover,
+  button.accordion:focus {
+    background-color: #4caf50;
+    color: #121213;
+  }
+  div.panel {
+    background-color: #333;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 20px;
+    transition: max-height 0.35s ease;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 1rem;
+  }
+  div.panel p, div.panel ul, div.panel ol {
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+  /* Browser support list styling */
+  #browser-support ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    list-style: disc inside;
   }
 </style>
 </head>
 <body>
-  <header role="banner">
-    <div tabindex="0" class="logo" onclick="scrollTo('hero')" onkeypress="if(event.key==='Enter')scrollTo('hero')" aria-label="Przejdź do strony głównej CzajnikDeluxe">CzajnikDeluxe</div>
-    <nav role="navigation" aria-label="Główne menu">
-      <a href="#hero">Start</a>
-      <a href="#ubeczblock">UbeczBlock</a>
-      <a href="#instrukcja">Instrukcja</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-  </header>
 
-  <main>
-    <section id="hero" tabindex="-1" aria-label="Sekcja powitalna">
-      <h1>Witaj w świecie CzajnikDeluxe</h1>
-      <p>Prezentuję innowacyjne pomysły i projekty zoptymalizowane pod sprzęt Czajnika Deluxe.</p>
-      <button onclick="scrollTo('ubeczblock')">Pierwszy projekt: UbeczBlock</button>
-    </section>
+<main>
 
-    <section id="ubeczblock" tabindex="-1" aria-label="Opis UbeczBlock">
-      <h2>UbeczBlock - zaawansowana konfiguracja uBlock Origin Lite</h2>
-      <p>Specjalnie zoptymalizowany filtr adblocker dla wymagań sprzętowych Czajnika Deluxe.</p>
-      <pre style="background:#222; padding:1rem; border-radius:8px; overflow-x:auto; font-size:0.9rem; max-height:400px;">
-{
-  "settings": {
-    "enable-remote-blocklists": true,
-    "enable-heuristics": true,
-    "dynamic-filtering-enabled": true,
-    "strict-blocking": true,
-    "block-media": true,
-    "suspend-background-lists": false,
-    "network-condition": {
-      "max-connections": 6,
-      "max-requests": 10,
-      "http-pipelining": false
-    },
-    "logging-level": "error"
-  },
-  "user-filters": [
-    "youtube.com##+js(set,y.config_.Config.supportPopupsBlockMessage,false)",
-    "youtube.com##+js(set,.prototype.adFound,0)",
-    "youtube.com##+js(set,player.config.raw_player_response.adPlacements,[])",
-    "youtube.com###player-ads",
-    "youtube.com###masthead-ad",
-    "chromecast.com##+js(set,window.navigator.plugins.length, 1)",
-    "chromecast.com##+js(set,window.Date.prototype.getTime,,window.Date.prototype.getTime() - 86400000)",
-    "||pagead2.googlesyndication.com/pagead/show_ads.js$script,domain=youtube.com",
-    "||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=youtube.com",
-    "@@||youtube.com/yts/jsbin/player*html5$script,domain=youtube.com",
-    "@@||youtube.com/yts/jsbin/player*base.js$script,domain=youtube.com"
-  ],
-  "advanced": {
-    "enable-websocket-filtering": true,
-    "auto-update-filters": true,
-    "filter-lists": [
-      "EasyList",
-      "uBlock filters",
-      "Fanboy's Annoyances",
-      "AdGuard URL Tracking Protection"
-    ],
-    "sponsorblock": {
-      "filters-enabled": true,
-      "categories-enabled": [
-        "sponsor", "intro", "outro", "selfpromo", "interaction", "music_offtopic", "preview"
-      ]
-    }
-  }
-}
-      </pre>
-    </section>
+  <!-- Katalog Usług -->
+  <section id="uslugi" tabindex="-1" aria-label="Katalog usług">
+    <h1>Ferro-IT i SecFerro DIVISION - Katalog Usług IT i Graficznych</h1>
+    <h2>Usługi IT</h2>
+    <ul>
+      <li><strong>Kreatywna Inżynieria:</strong>
+        <ul>
+          <li>Naprawa i optymalizacja systemów UNIX, Android i iOS</li>
+          <li>Konfiguracja i doradztwo techniczne</li>
+        </ul>
+      </li>
+      <li><strong>Konsultacje IT:</strong>
+        <ul>
+          <li>Doradztwo sprzętowe i programowe</li>
+          <li>Planowanie infrastruktury IT</li>
+        </ul>
+      </li>
+      <li><strong>Projekty IT:</strong>
+        <ul>
+          <li>Tworzenie i wdrażanie aplikacji</li>
+          <li>Zarządzanie projektami</li>
+        </ul>
+      </li>
+    </ul>
+    <h2>Usługi Graficzne</h2>
+    <ul>
+      <li><strong>Sztuka w Pikselach:</strong>
+        <ul>
+          <li>Projektowanie logo i materiałów promocyjnych</li>
+          <li>Tworzenie banerów i ulotek</li>
+        </ul>
+      </li>
+      <li><strong>Produkcja Video:</strong>
+        <ul>
+          <li>Edytowanie filmów na TikTok, YouTube</li>
+          <li>Tworzenie angażujących treści wizualnych</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Odwiedź kanał: <a href="https://www.youtube.com/@FerroART" target="_blank" rel="noopener noreferrer">FerroART</a></p>
+    <p>Kontakt: <a href="mailto:nieznanynikomuu@gmail.com">nieznanynikomuu@gmail.com</a></p>
+  </section>
 
-    <section id="instrukcja" tabindex="-1" aria-label="Instrukcja instalacji i używania UbeczBlock">
-      <h2>Instrukcja publikacji i konfiguracji</h2>
+  <!-- Regulamin -->
+  <section id="regulamin" tabindex="-1" aria-label="Regulamin usług">
+    <h2>Regulamin, Zasady i Autorstwo</h2>
+    <p><strong>Reprezentacja:</strong> SecFerro DIVISION Team przez 🅽ɨɛʐռǟռʏ Nikomu ꎇꫀའའꪮart</p>
+    <h3>Regulamin korzystania</h3>
+    <ul>
+      <li>Usługi zgodne z prawem i standardami bezpieczeństwa.</li>
+      <li>Zobowiązanie do rzetelności danych przez klientów.</li>
+      <li>Prawo odmowy usługi w razie naruszeń.</li>
+      <li>Realizacja usług z najwyższą jakością i terminowością.</li>
+      <li>Aktualizacje regulaminu z odpowiednim powiadomieniem.</li>
+    </ul>
+    <h3>Zasady etyczne</h3>
+    <ul>
+      <li>Poufność danych klientów i transparentność działań.</li>
+      <li>Stały rozwój i podnoszenie jakości usług.</li>
+      <li>Profesjonalizm i odpowiedzialność za realizację projektów.</li>
+    </ul>
+    <h3>Własność intelektualna</h3>
+    <p>Wszystkie materiały i rozwiązania są własnością zespołu i chronione prawami autorskimi.</p>
+  </section>
+
+  <!-- Polityka Prywatności -->
+  <section id="polityka-prywatnosci" tabindex="-1" aria-label="Polityka Prywatności">
+    <h2>Polityka Prywatności</h2>
+    <p>Data ostatniej aktualizacji: 14 września 2025</p>
+    <p>Szanujemy prywatność i przestrzegamy RODO. Dane osobowe zbieramy tylko za wyraźną zgodą i zabezpieczamy je zgodnie z najwyższymi standardami.</p>
+    <h3>Dane zbierane</h3>
+    <ul>
+      <li>Lokalne dane konfiguracyjne.</li>
+      <li>Anonimowe dane analityczne podnoszące jakość usług.</li>
+      <li>Dane telemetryczne wyłącznie z dobrowolną zgodą użytkownika.</li>
+    </ul>
+    <h3>Bezpieczeństwo danych</h3>
+    <ul>
+      <li>Nowoczesne mechanizmy szyfrowania i zabezpieczeń.</li>
+      <li>Regularne audyty i szkolenia zespołu.</li>
+    </ul>
+    <h3>Prawa użytkowników</h3>
+    <ul>
+      <li>Dostęp, korekta i usunięcie danych.</li>
+      <li>Wycofanie zgody na przetwarzanie danych.</li>
+      <li>Skarga do organu nadzorczego.</li>
+    </ul>
+    <h3>Kontakt</h3>
+    <p><a href="mailto:nieznanynikomuu@gmail.com">nieznanynikomuu@gmail.com</a></p>
+  </section>
+
+  <!-- Zakładka CzajnikDeluxe -->
+  <section id="czajnikdeluxe" tabindex="-1" aria-label="Projekty CzajnikaDeluxe">
+    <h2>CzajnikDeluxe - Projekty</h2>
+
+    <button class="accordion" aria-expanded="false" aria-controls="ubeczblocker-panel" id="ubeczblocker-button">
+      UbeczBlocker – ultraoptymalny blocker dla słabszych komputerów
+    </button>
+    <div class="panel" id="ubeczblocker-panel" aria-labelledby="ubeczblocker-button" hidden>
+      <p><strong>Opis:</strong></p>
+      <p>UbeczBlocker to ultraoptymalna konfiguracja uBlock Origin Lite, która skutecznie blokuje reklamy i trackery, minimalizując zużycie zasobów na komputerach z procesorami typu Intel Core 2 Duo i porównywalnymi.</p>
+
+      <h4>Zastosowanie:</h4>
+      <p>Dzięki temu narzędziu użytkownicy z komputerami niskiej mocy mogą swobodnie przeglądać internet, unikając spowolnień spowodowanych nadmierną liczbą niepotrzebnych treści.</p>
+
+      <h4>Wymagane oprogramowanie:</h4>
+      <ul>
+        <li>Przeglądarka Chrome, Firefox lub Edge (wersje wspierane poniżej)</li>
+        <li>Rozszerzenie <a href="https://chrome.google.com/webstore/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh" target="_blank" rel="noopener noreferrer">uBlock Origin Lite</a></li>
+        <li>Plik konfiguracyjny JSON do importu (dostępny poprzez stronę lub kontakt)</li>
+      </ul>
+
+      <h4>Rozszerzony zestaw wspieranych przeglądarek:</h4>
+      <div id="browser-support">
+        <ul>
+          <li>Google Chrome - wersja 90+ (pełne wsparcie WebExtensions i nowoczesnych API)</li>
+          <li>Mozilla Firefox - wersja 89+ (stabilne, optymalne działanie z uBlock Origin)</li>
+          <li>Microsoft Edge (Chromium) - wersja 90+</li>
+          <li>Opera - wersja 76+</li>
+          <li>Safari - wersja 15+ (zalecane najnowsze wersje ze względu na ograniczenia API)</li>
+          <li>Inne przeglądarki wspierające WebExtensions ze wsparciem dla uBlock Origin Lite</li>
+        </ul>
+      </div>
+      <p><em>Uwaga:</em> Ze względu na specyfikę i ograniczenia starszych przeglądarek (np. Internet Explorer) oraz niestandardowych środowisk, zalecane jest korzystanie z aktualnych i obsługiwanych wersji.</p>
+
+      <h4>Instrukcja instalacji i konfiguracji:</h4>
       <ol>
-        <li>Zainstaluj uBlock Origin Lite z Chrome Web Store lub Mozilla Add-ons.</li>
-        <li>Przejdź do ustawień rozszerzenia i wybierz opcję Import / Export.</li>
-        <li>Wgraj powyższy plik konfiguracyjny JSON.</li>
-        <li>Zapisz ustawienia i odśwież przeglądarkę.</li>
-        <li>Testuj działanie, upewniając się, że reklamy na YouTube i Chromecast są skutecznie blokowane.</li>
-        <li>Dołączaj nowe filtry według potrzeb i zgłaszaj sugestie przez sekcję Kontakt.</li>
+        <li>Zainstaluj uBlock Origin Lite z oficjalnego sklepu rozszerzeń swojej przeglądarki.</li>
+        <li>Wejdź do ustawień rozszerzenia, wybierz „Importuj konfigurację”.</li>
+        <li>Załaduj plik JSON z konfiguracją UbeczBlocker.</li>
+        <li>Zapisz zmiany i odśwież przeglądarkę.</li>
+        <li>Testuj działanie, dostosowuj według potrzeb.</li>
       </ol>
-    </section>
 
-    <section id="kontakt" tabindex="-1" aria-label="Sekcja kontaktowa">
-      <h2>Kontakt z CzajnikDeluxe</h2>
-      <p>Masz pytania lub chcesz zaproponować pomysł? Napisz do mnie na <a href="mailto: kontakt@czajnikdeluxe.pl">kontakt@czajnikdeluxe.pl</a>.</p>
-    </section>
-  </main>
+      <h4>Kontakt i wsparcie:</h4>
+      <p>W przypadku pytań, problemów lub sugestii:</p>
+      <ul>
+        <li><a href="https://m.me/FerroARTY" target="_blank" rel="noopener noreferrer">Kontakt za pomocą Messenger FerroARTY</a></li>
+        <li><a href="https://m.me/DukatMaker" target="_blank" rel="noopener noreferrer">Kontakt za pomocą Messenger DukatMaker</a></li>
+      </ul>
+    </div>
 
-  <footer role="contentinfo" aria-label="Stopka strony">
-    <p style="text-align:center; padding:2rem 1rem; color:#777;">© 2025 CzajnikDeluxe. Wszelkie prawa zastrzeżone.</p>
-  </footer>
+    <article aria-labelledby="other-projects-title" style="margin-top:40px;">
+      <h3 id="other-projects-title">Inne projekty</h3>
+      <p>Kolejne projekty pojawią się niebawem. Zachęcamy do śledzenia aktualizacji oraz kontaktu.</p>
+    </article>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 Ferro-IT & SecFerro DIVISION Team. Wszelkie prawa zastrzeżone.</p>
+</footer>
 
 <script>
-  function scrollTo(id) {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({behavior: 'smooth'});
-  }
+  // Accordion functionality with accessibility
+
+  document.querySelectorAll('.accordion').forEach(button => {
+    button.addEventListener('click', () => {
+      const panel = document.getElementById(button.getAttribute('aria-controls'));
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        button.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+        panel.style.maxHeight = null;
+      } else {
+        button.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+
+    button.addEventListener('keydown', (e) => {
+      // Support keyboard toggle Enter or Space
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        button.click();
+      }
+    });
+  });
+
+  // Simple fade-in animation on scroll for articles
+
+  const articles = document.querySelectorAll('#czajnikdeluxe article');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.1});
+
+  articles.forEach(article => {
+    article.style.opacity = 0;
+    article.style.transform = 'translateY(20px)';
+    article.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    observer.observe(article);
+  });
 </script>
+
 </body>
 </html>
