@@ -1,0 +1,73 @@
+{
+  "settings": {
+    "enable-remote-blocklists": true,
+    "enable-heuristics": true,
+    "dynamic-filtering-enabled": false,
+    "strict-blocking": true,
+    "block-media": true,
+    "suspend-background-lists": true,
+    "network-condition": {
+      "max-connections": 3,
+      "max-requests": 5,
+      "http-pipelining": false
+    },
+    "logging-level": "error"
+  },
+  "user-filters": [
+    "youtube.com##+js(set,y.config_.Config.supportPopupsBlockMessage,false)",
+    "youtube.com##+js(set,.prototype.adFound,0)",
+    "youtube.com##+js(set,player.config.raw_player_response.adPlacements,[])",
+    "youtube.com##+js(set,.prototype.hasInstreamAd,true)",
+    "chromecast.com##+js(aopr,window.navigator.userAgent,'ast_lite_chromecast_gen12')",
+    "chromecast.com##+js(set,window.navigator.plugins.length, 1)",
+    "||update.googleapis.com$domain=chromecast.com",
+    "chromecast.com##+js(set,window.Date.prototype.getTime,,window.Date.prototype.getTime() - 86400000)",
+    "||adworkmedia.com/gLoader.php?GID=$script,domain=youtube.com",
+    "||adworkmedia.com/gTemplate.php?GID=$subdocument,domain=youtube.com",
+    "||loxtk.com/gLoader.php?GID=$script,domain=youtube.com",
+    "||loxtk.com/gTemplate.php?GID=$subdocument,domain=youtube.com",
+    "||contentlockingnetworks.com/gLoader.php?GID=$script,domain=youtube.com",
+    "||contentlockingnetworks.com/gTemplate.php?GID=$subdocument,domain=youtube.com",
+    "||adscendmedia.com/gwjs.php?aff=$script,domain=youtube.com",
+    "||adscendmedia.com/gwframe.php?$subdocument,domain=youtube.com",
+    "||cpagrip.com/script_include.php?id=$script,domain=youtube.com",
+    "||pagead2.googlesyndication.com/pagead/show_ads.js$script,domain=youtube.com",
+    "||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=youtube.com",
+    "||blockadblock.com$script,domain=youtube.com",
+    "@@||youtube.com/yts/jsbin/player*html5$script,domain=youtube.com",
+    "@@||youtube.com/yts/jsbin/player*base.js$script,domain=youtube.com",
+    "youtube.com###player-ads",
+    "youtube.com###masthead-ad",
+    "youtube.com###google_ads_iframe",
+    "youtube.com##.ytp-ce-element",
+    "youtube.com##.ytp-cards-teaser-text",
+    "youtube.com##.ytp-cards-button-icon-default",
+    "youtube.com##.ytp-scroll-min.ytp-pause-overlay",
+    "youtube.com##.annotation-type-text.annotation-popup-shape.annotation-shape"
+  ],
+  "advanced": {
+    "enable-websocket-filtering": true,
+    "auto-update-filters": true,
+    "filter-lists": [
+      "EasyList",
+      "uBlock filters",
+      "uBlock filters – Annoyances",
+      "uBlock filters – Privacy",
+      "Fanboy's Annoyances",
+      "Fanboy's Social Blocking List",
+      "AdGuard URL Tracking Protection"
+    ],
+    "sponsorblock": {
+      "filters-enabled": true,
+      "categories-enabled": [
+        "sponsor",
+        "intro",
+        "outro",
+        "selfpromo",
+        "interaction",
+        "music_offtopic",
+        "preview"
+      ]
+    }
+  }
+}
